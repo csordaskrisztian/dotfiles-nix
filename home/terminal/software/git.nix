@@ -8,10 +8,14 @@
   programs.git = {
     enable = true;
     userName = "csordaskrisztian";
-    userEmail = "csordas.krisztian03@gmail.com";
+    userEmail = "73989259+csordaskrisztian@users.noreply.github.com";
     signing = {
       key = "7E34EB412C479CB2";
       signByDefault = true;
+    };
+
+    delta = {
+      enable = true;
     };
   };
 }

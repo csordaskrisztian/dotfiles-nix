@@ -8,7 +8,7 @@
     ./fonts
     ./editors/helix
     ./terminal
-    ./wayland/waybar/default.nix
+    ./wayland
   ];
 
   home = {
@@ -22,9 +22,9 @@
       neovim
       neofetch
       kitty
-      hyprpaper
-      wofi
       zathura
+      termusic
+      pavucontrol
 
       xz
       wezterm

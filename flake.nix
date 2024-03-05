@@ -16,10 +16,11 @@
     self,
     nixpkgs,
     home-manager,
+    hyprland,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    theme = import ./themes/gruvbox.nix;
+    theme = import ./themes/everblush.nix;
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
