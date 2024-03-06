@@ -17,5 +17,9 @@
     delta = {
       enable = true;
     };
+
   };
+
+  xdg.configFile."git/config".recursive = true;
+  # xdg.configFile."git".recursive = true;
 }
