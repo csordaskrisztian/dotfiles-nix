@@ -4,6 +4,7 @@
     ./hyprland
     ./waybar
     ./hyprpaper.nix
+    # ./wlogout.nix
   ];
   
   home = {

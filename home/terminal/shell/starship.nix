@@ -25,7 +25,8 @@
 
       nix_shell = {
         symbol = " ";
-        heuristic = true;
+        # heuristic = true;
+        disabled = false;
       };
     };
   };

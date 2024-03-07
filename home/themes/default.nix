@@ -1,9 +1,16 @@
 {
   config,
-  lib,
+  inputs,
   pkgs,
   ...
 }: {
+  home.pointerCursor = {
+    name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
+    size = 16;
+    gtk.enable = true;
+  };
+
   gtk = {
     enable = true;
 
@@ -23,13 +30,13 @@
       package = pkgs.papirus-icon-theme;
     };
 
-    cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-    };
+    # cursorTheme = {
+    #   name = "Bibata-Modern-Ice";
+    #   package = pkgs.bibata-cursors;
+    # };
 
     gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+      gtk-application-prefer-dark-theme = 1;
     };
   };
 }

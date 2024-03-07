@@ -7,6 +7,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./fonts
   ];
 
   # Use the GRUB 2 boot loader.

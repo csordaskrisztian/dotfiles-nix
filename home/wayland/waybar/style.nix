@@ -64,6 +64,10 @@ tooltip {
   border-radius: 8px;
 }
 
+#battery {
+  padding-right: 15px;
+}
+
 #clock {
     border-radius: 12px;
     padding-left: 3px;
@@ -81,7 +85,7 @@ tooltip {
     padding: 0px 15px 0px 10px;
 
     /*border-right: solid 1px #282738;*/
-    font-size: 20px;
+    font-size: 25px;
 }
   '';
 }

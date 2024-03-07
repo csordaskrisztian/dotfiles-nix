@@ -1,8 +1,11 @@
-{pkgs,...}: {
-  
+{
+  pkgs,
+  theme,
+  ...
+}: {
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ~/Downloads/gruvbox-dark-blue.png
-    wallpaper = ,~/Downloads/gruvbox-dark-blue.png
+    preload = ${theme.wallpaper}
+    wallpaper = ,${theme.wallpaper}
   '';
 
   # systemd.user.services.hyprpaper = {

@@ -56,7 +56,7 @@
         shadow_render_power = 3;
         "col.shadow" = "rgba(1a1a1aee)";
         layerrule = ["ignorezero waybar"];
-        blurls = ["waybar" "popups" "lockscreen"];
+        blurls = ["waybar" "popups" "lockscreen" "wlogout"];
       };
 
       animation = {
@@ -124,7 +124,7 @@
         "$mod, F, exec, firefox"
         "$mod, P, pseudo"
         "$mod, J, togglesplit"
-        "Control, Escape, exec, killall waybar || waybar"
+        "Control, Escape, exec, killall .waybar-wrapped || waybar"
         "$mod, S, togglespecialworkspace"
         "$mod Shift, S, movetoworkspace, special"
         "$mod, C, exec, hyprctl dispatch centerWindow"
@@ -142,6 +142,10 @@
         "$mod Shift, right, movewindow, r"
         "$mod Shift, up, movewindow, u"
         "$mod Shift, down, movewindow, d"
+
+        "$mod Shift, Space, workspaceopt, allfloat"
+        "$mod Shift, P, workspaceopt, allpseudotile"
+        "$mod, Escape, exec, wlogout -p layer-shell"
 
         "${builtins.concatStringsSep "\n" (builtins.genList (
             x: let

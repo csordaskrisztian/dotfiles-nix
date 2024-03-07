@@ -16,7 +16,7 @@
     killall
     eza
     gnupg
-
+    nitch
     dust
     duf
     fd
