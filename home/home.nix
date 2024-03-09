@@ -5,11 +5,12 @@
 }: {
   imports = [
     ./themes
-    # ./fonts
     ./editors/helix
     ./terminal
     ./wayland
   ];
+
+  news.display = "show";
 
   home = {
     username = "krisz";
@@ -26,8 +27,11 @@
       termusic
       pavucontrol
 
+      swww
+
       xz
-      wezterm
+
+      gnome.dconf-editor
     ];
 
     file = {

@@ -5,7 +5,7 @@
     border-radius: 0px;
     font-family: JetBrainsMono Nerd Font;
     font-size: 14px;
-    font-style: normal;
+    font-weight: bold;
     min-height: 0px;
     padding: 0;
     margin: 0;
@@ -14,11 +14,10 @@
 
 
 window#waybar {
-    background: rgba(20,27,30,.7);
+    background: rgba(20,27,30,.8);
     transition-property: background-color;
     transition-duration: .5s;
     color: #${theme.colors.color7};
-    padding: 0.3rem;
     }
 
 tooltip {
@@ -29,26 +28,38 @@ tooltip {
 }
 
 #workspaces {
-   padding: 8px 5px;
+   padding: 10px 7px;
    border-radius: 12px;
 }
 
+#workspaces * {
+  font-size: 0px;
+}
+
 #workspaces button {
-  padding: 0px 5px;
-  margin: 0px 3px;
-  border-radius: 22px;
+  margin: 0px 2px;
+  border-radius: 100%;
   color: transparent;
-  background: #${theme.colors.color8};
+  background: #${theme.colors.color7};
   transition: all 0.3s ease-in-out;   
+  min-width: 10px;
+  min-height: 10px;
 }
 
 #workspaces button:hover {
   	background-color: #${theme.colors.color6};
+    min-width: 25px;
+    border-radius: 18px;
+}
+
+#workspaces button.empty {
+  background-color: #${theme.colors.background};
 }
 
 #workspaces button.active {
-    background-color: #${theme.colors.color1};
-    min-width: 45px;
+    background-color: #${theme.colors.color4};
+    border-radius: 18px;
+    min-width: 30px;
 }
 
 #tray,
@@ -85,7 +96,7 @@ tooltip {
     padding: 0px 15px 0px 10px;
 
     /*border-right: solid 1px #282738;*/
-    font-size: 25px;
+    font-size: 20px;
 }
   '';
 }

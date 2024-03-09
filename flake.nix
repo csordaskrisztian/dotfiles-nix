@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "flek :)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprlock.url = "github:hyprwm/hyprlock";
+    hypridle.url = "github:hyprwm/hypridle";
     helix.url = "github:helix-editor/helix/master";
   };
 
@@ -16,17 +18,20 @@
     self,
     nixpkgs,
     home-manager,
-    hyprland,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     theme = import ./themes/everblush.nix;
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowunfree = true;
+    };
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
+      inherit system;
         specialArgs = {
           inherit inputs;
-          inherit system;
         };
         modules = [./nixos/configuration.nix];
       };
@@ -34,7 +39,7 @@
 
     homeConfigurations = {
       "krisz@nixos" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+        inherit pkgs;
         extraSpecialArgs = {inherit inputs theme;};
         modules = [./home/home.nix];
       };

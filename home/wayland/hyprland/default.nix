@@ -12,8 +12,10 @@
       monitor = [",preferred,auto,auto"];
 
       exec-once = [
-        "waybar"
-        "hyprpaper"
+        # "hyprpaper"
+        "swww init"
+        "hyprlock"
+        
       ];
 
       env = [
@@ -31,8 +33,8 @@
       general = {
         gaps_in = 5;
         gaps_out = 5;
-        border_size = 2;
-        "col.active_border" = "0xff${theme.colors.color4}";
+        border_size = 1;
+        "col.active_border" = "0xff${theme.colors.color1}";
         "col.inactive_border" = "0xff${theme.colors.background}";
         layout = "dwindle";
         resize_on_border = true;
@@ -43,12 +45,12 @@
         rounding = 6;
         blur = {
           enabled = true;
-          size = 8;
+          size = 6;
           passes = 3;
           ignore_opacity = true;
           new_optimizations = true;
           xray = false;
-          noise = "0.1";
+          noise = "0.05";
         };
         drop_shadow = true;
         shadow_ignore_window = true;
@@ -56,7 +58,7 @@
         shadow_render_power = 3;
         "col.shadow" = "rgba(1a1a1aee)";
         layerrule = ["ignorezero waybar"];
-        blurls = ["waybar" "popups" "lockscreen" "wlogout"];
+        blurls = ["waybar" "popups" "lockscreen" "logout_dialog"];
       };
 
       animation = {
@@ -86,7 +88,7 @@
       dwindle = {
         pseudotile = true;
         preserve_split = true;
-        force_split = 2;
+        # force_split = 2;
       };
 
       master = {
@@ -146,6 +148,9 @@
         "$mod Shift, Space, workspaceopt, allfloat"
         "$mod Shift, P, workspaceopt, allpseudotile"
         "$mod, Escape, exec, wlogout -p layer-shell"
+        "$mod, Tab, cyclenext"
+        "$mod, Tab, bringactivetotop"
+        "Control Alt, L, exec, loginctl lock-session"
 
         "${builtins.concatStringsSep "\n" (builtins.genList (
             x: let

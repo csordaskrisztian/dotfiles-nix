@@ -1,6 +1,6 @@
 {
   colors = {
-    background = "141b1e";
+    background = "161616";
     foreground = "dadada";
 
     #black
@@ -35,5 +35,5 @@
     color7 = "b3b9b8";
     color15 = "bdc3c2";
   };
-  wallpaper = "~/Pictures/grad.png";
+  wallpaper = "~/Pictures/mountain.png";
 }

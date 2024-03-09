@@ -12,6 +12,7 @@
         layer = "top";
         position = "top";
         spacing = 4;
+        height = 30;
 
         modules-left = [
           "custom/launcher"
@@ -34,6 +35,7 @@
 
         "custom/launcher" = {
           format = "󱄅";
+          on-click = "wlogout";
         };
 
         "hyprland/workspaces" = {

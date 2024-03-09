@@ -4,7 +4,11 @@
     ./hyprland
     ./waybar
     ./hyprpaper.nix
-    # ./wlogout.nix
+    ./wlogout.nix
+    ./hyprlock.nix
+    ./hypridle.nix
+    inputs.hyprlock.homeManagerModules.default
+    inputs.hypridle.homeManagerModules.default
   ];
   
   home = {
@@ -12,7 +16,6 @@
       wl-clipboard
       hyprpaper
       wofi
-      wlogout
     ];
   };
 

@@ -18,6 +18,11 @@
       listgen = "sudo nix-env -p /nix/var/nix/profiles/system --list-generations";
       nixremove = "nix-store --gc";
       bloat = "nix path-info -Sh /run/current-system";
+
+      tree = "eza --tree";
+      l = "eza";
+      # eza = "eza -l --sort type --no-permissions --no-user --no-time --header --icons --no-filesize --group-directories-first";
+      
     };
   };
 }

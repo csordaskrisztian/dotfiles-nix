@@ -20,7 +20,9 @@
       };
       "ui.statusline" = {fg = "green";};
       "ui.statusline.inactive" = {fg = "cursorline";};
-      "ui.statusline.normal" = {fg = "green";};
+      "ui.statusline.normal" = {fg = "cursorline"; bg = "green";};
+      "ui.statusline.insert" = {fg = "cursorline"; bg = "blue";};
+      "ui.statusline.select" = {fg = "cursorline"; bg = "magenta";};
       "ui.statusline.primary" = {bg = "#1a1a1a";};
       "ui.virtual.inlay-hint" = {
         fg = "black";
@@ -88,7 +90,10 @@
         tab = ["goto_next_buffer"];
         S-tab = ["goto_previous_buffer"];
 
-        space = {x = ":buffer-close";};
+        space = {
+          x = ":buffer-close";
+          q = ":fmt";
+        };
       };
     };
   };

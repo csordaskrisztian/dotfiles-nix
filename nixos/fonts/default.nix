@@ -5,6 +5,9 @@
       lexend
       source-code-pro
 
+      maple-mono-NF
+      maple-mono-SC-NF
+
       (nerdfonts.override {
         fonts = [
           "FiraCode"
@@ -18,7 +21,7 @@
       defaultFonts = {
         serif = ["Lexend"];
         sansSerif = ["Lexend"];
-        monospace = ["Iosevka Nerd Font"];
+        monospace = ["Maple Mono SC NF"];
       };
     };
   };

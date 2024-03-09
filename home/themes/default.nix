@@ -5,9 +5,12 @@
   ...
 }: {
   home.pointerCursor = {
-    name = "Bibata-Modern-Ice";
-    package = pkgs.bibata-cursors;
-    size = 16;
+    # name = "Bibata-Modern-Ice";
+    # package = pkgs.bibata-cursors;
+    # size = 16;
+    name = "Qogir";
+    size = 24;
+    package = pkgs.qogir-icon-theme;
     gtk.enable = true;
   };
 
@@ -21,8 +24,10 @@
     };
 
     theme = {
-      name = "Orchis-Dark";
-      package = pkgs.orchis-theme;
+      # name = "Orchis-Dark";
+      # package = pkgs.orchis-theme;
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
     };
 
     iconTheme = {
