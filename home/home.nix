@@ -27,8 +27,6 @@
       termusic
       pavucontrol
 
-      swww
-
       xz
 
       gnome.dconf-editor
@@ -39,7 +37,7 @@
   };
 
   services = {
-    dunst.enable = true;
+    # dunst.enable = true;
 
     gpg-agent = {
       enable = true;

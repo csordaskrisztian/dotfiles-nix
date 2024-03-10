@@ -14,10 +14,10 @@
 
 
 window#waybar {
-    background: rgba(20,27,30,.8);
+    background: rgba(22,22,22,1);
     transition-property: background-color;
     transition-duration: .5s;
-    color: #${theme.colors.color7};
+    color: #${theme.colors.foreground};
     }
 
 tooltip {
@@ -28,7 +28,7 @@ tooltip {
 }
 
 #workspaces {
-   padding: 10px 7px;
+   padding: 9px 7px;
    border-radius: 12px;
 }
 
@@ -37,29 +37,31 @@ tooltip {
 }
 
 #workspaces button {
-  margin: 0px 2px;
+  margin: 2px 2px;
   border-radius: 100%;
   color: transparent;
   background: #${theme.colors.color7};
   transition: all 0.3s ease-in-out;   
-  min-width: 10px;
-  min-height: 10px;
+  min-width: 8px;
+  min-height: 8px;
 }
 
 #workspaces button:hover {
-  	background-color: #${theme.colors.color6};
+  	background-color: #${theme.colors.foreground};
     min-width: 25px;
     border-radius: 18px;
 }
 
 #workspaces button.empty {
-  background-color: #${theme.colors.background};
+  background-color: #${theme.colors.color8};
 }
 
 #workspaces button.active {
     background-color: #${theme.colors.color4};
     border-radius: 18px;
-    min-width: 30px;
+    min-width: 35px;
+    min-height: 10px;
+    margin: 1px 2px;
 }
 
 #tray,
@@ -92,7 +94,7 @@ tooltip {
 }
 
 #custom-launcher {
-    color: #${theme.colors.color6};
+    color: #${theme.colors.color4};
     padding: 0px 15px 0px 10px;
 
     /*border-right: solid 1px #282738;*/

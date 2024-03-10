@@ -16,6 +16,9 @@
       wl-clipboard
       hyprpaper
       wofi
+      swww
+      swaynotificationcenter
+
     ];
   };
 

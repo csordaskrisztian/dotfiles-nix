@@ -28,21 +28,26 @@
     };
   in {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-      inherit system;
+      laptop = nixpkgs.lib.nixosSystem {
+        inherit system;
         specialArgs = {
           inherit inputs;
         };
-        modules = [./nixos/configuration.nix];
+        modules = [./hosts/laptop];
+      };
+      desktop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [./hosts/desktop];
       };
     };
 
-    homeConfigurations = {
-      "krisz@nixos" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {inherit inputs theme;};
-        modules = [./home/home.nix];
-      };
+    homeConfigurations."krisz" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = {inherit inputs theme;};
+      modules = [./home/home.nix];
     };
   };
 }

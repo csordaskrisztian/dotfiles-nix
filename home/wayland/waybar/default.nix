@@ -49,7 +49,7 @@
         };
 
         "clock" = {
-          format = "{:%R}";
+          format = "{:%R - %a %d.}";
           tooltip-format = "{:%A, %B, %d, %Y}";
           tooltip = true;
         };

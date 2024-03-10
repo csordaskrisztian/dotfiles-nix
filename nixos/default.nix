@@ -6,19 +6,19 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
+    # ./hardware-configuration.nix
     ./fonts
   ];
 
-  boot.loader.grub.enable = true;
+  # boot.loader.grub.enable = true;
   # boot.loader.grub.efiSupport = true;
   # boot.loader.grub.efiInstallAsRemovable = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos";
+  # networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Budapest";
@@ -50,13 +50,21 @@
     gnome.gnome-keyring.enable = true;
     gvfs.enable = true;
 
-    greetd = {
+    greetd = let
+      hyprsession = {
+        command = "${lib.getExe config.programs.hyprland.package}";
+        user = "krisz";
+      };
+      tuisession = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --greeting Sneed --asterisks --remember --cmd Hyprland";
+          user = "krisz";
+      };
+    in {
       enable = true;
       settings = {
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --greeting Sneed --asterisks --remember --cmd Hyprland";
-          user = "krisz";
-        };
+        default_session = hyprsession; 
+        initail_session = hyprsession;
+        terminal.vt = 1;
       };
     };
   };
@@ -98,6 +106,13 @@
     };
   };
 
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
+  };
+  # powerManagement.enable = true;
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
@@ -107,11 +122,11 @@
   system.autoUpgrade = {
     enable = true;
     flake = "${config.users.users.krisz.home}/dotfiles-nix";
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--commit-lock-file"
-    ];
+    # flags = [
+    #   "--update-input"
+    #   "nixpkgs"
+    #   "--commit-lock-file"
+    # ];
   };
   users.users.krisz = {
     isNormalUser = true;
