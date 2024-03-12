@@ -6,6 +6,8 @@
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    systemd.enable = true;
     settings = {
       "$mod" = "SUPER";
 
@@ -15,7 +17,8 @@
         # "hyprpaper"
         "swww init"
         "hyprlock"
-        
+        "swaync"
+        "waybar"
       ];
 
       env = [
@@ -34,7 +37,7 @@
         gaps_in = 5;
         gaps_out = 5;
         border_size = 1;
-        "col.active_border" = "0xff${theme.colors.color1}";
+        "col.active_border" = "0xff${theme.colors.color4}";
         "col.inactive_border" = "0xff${theme.colors.background}";
         layout = "dwindle";
         resize_on_border = true;
@@ -42,7 +45,7 @@
       };
 
       decoration = {
-        rounding = 6;
+        rounding = 8;
         blur = {
           enabled = true;
           size = 6;
@@ -114,6 +117,7 @@
         "keepaspectratio,title:^(Picture-inPicture)$"
         "fakefullscreen,title:^(Picture-inPicture)$"
         "pin,title:^(Picture-inPicture)$"
+        "noborder,onworkspace:1"
       ];
 
       bind = [
@@ -123,7 +127,7 @@
         "$mod, delete, exit"
         "$mod, Space, togglefloating"
         "$mod, D, exec, wofi -f --show=drun"
-        "$mod, F, exec, firefox"
+        "$mod, F, exec, librewolf"
         "$mod, P, pseudo"
         "$mod, J, togglesplit"
         "Control, Escape, exec, killall .waybar-wrapped || waybar"
@@ -180,3 +184,4 @@
     };
   };
 }
+  

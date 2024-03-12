@@ -3,7 +3,7 @@
 * {
     border: none;
     border-radius: 0px;
-    font-family: JetBrainsMono Nerd Font;
+    font-family: FiraCode Nerd Font;
     font-size: 14px;
     font-weight: bold;
     min-height: 0px;

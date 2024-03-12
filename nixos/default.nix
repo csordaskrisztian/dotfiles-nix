@@ -10,15 +10,6 @@
     ./fonts
   ];
 
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Budapest";
@@ -34,21 +25,14 @@
       enable = true;
       xkb.layout = "hu";
       autorun = false;
-
-      desktopManager.xfce.enable = true;
-
-      # displayManager = {
-      #   gdm.enable = true;
-      #   gdm.wayland = true;
-      # };
     };
-
-    dbus.packages = with pkgs; [
-      gcr
-      gnome.gnome-settings-daemon
-    ];
-    gnome.gnome-keyring.enable = true;
-    gvfs.enable = true;
+    blueman.enable = true;
+    # dbus.packages = with pkgs; [
+    #   gcr
+    #   gnome.gnome-settings-daemon
+    # ];
+    # gnome.gnome-keyring.enable = true;
+    # gvfs.enable = true;
 
     greetd = let
       hyprsession = {
@@ -57,12 +41,12 @@
       };
       tuisession = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --greeting Sneed --asterisks --remember --cmd Hyprland";
-          user = "krisz";
+        user = "krisz";
       };
     in {
       enable = true;
       settings = {
-        default_session = hyprsession; 
+        default_session = hyprsession;
         initail_session = hyprsession;
         terminal.vt = 1;
       };
@@ -74,7 +58,6 @@
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
-    waybar.enable = true;
     zsh.enable = true;
   };
 
@@ -114,7 +97,14 @@
   };
   # powerManagement.enable = true;
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
@@ -122,11 +112,6 @@
   system.autoUpgrade = {
     enable = true;
     flake = "${config.users.users.krisz.home}/dotfiles-nix";
-    # flags = [
-    #   "--update-input"
-    #   "nixpkgs"
-    #   "--commit-lock-file"
-    # ];
   };
   users.users.krisz = {
     isNormalUser = true;
@@ -142,6 +127,11 @@
     vim
     wget
   ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

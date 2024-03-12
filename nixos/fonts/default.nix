@@ -4,7 +4,7 @@
       material-symbols
       lexend
       source-code-pro
-
+      
       maple-mono-NF
       maple-mono-SC-NF
 
@@ -13,6 +13,7 @@
           "FiraCode"
           "JetBrainsMono"
           "Iosevka"
+          "CascadiaCode"
         ];
       })
     ];

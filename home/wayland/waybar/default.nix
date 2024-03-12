@@ -3,10 +3,10 @@
 
   programs.waybar = {
     enable = true;
-    systemd = {
-      enable = true;
-      target = "graphical-session.target";
-    };
+    # systemd = {
+    #   enable = true;
+    #   target = "graphical-session.target";
+    # };
     settings = {
       mainBar = {
         layer = "top";
@@ -24,6 +24,7 @@
         ];
 
         modules-right = [
+          "idle_inhibitor"
           "tray"
           "cpu"
           "memory"
@@ -41,6 +42,9 @@
         "hyprland/workspaces" = {
           on-click = "activate";
           format = "";
+          persistent-workspaces = {
+            "*" = 5;
+          };
         };
 
         "tray" = {
@@ -67,13 +71,14 @@
         };
 
         "network" = {
-          format-wifi = "󰤨 {essid}";
+          format-wifi = "{icon}";
           format-ethernet = "󱘖";
           tooltip-format = "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
           format-linked = "󱘖 {ifname} (No IP)";
           format-disconnected = " Disconnected";
           format-alt = "󰤨 {signalStrength}%";
           interval = 5;
+          format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
         };
 
         "pulseaudio" = {
@@ -99,7 +104,16 @@
         "battery" = {
           bat = "BAT0";
           interval = 60;
-          format = "󰁹{capacity}%";
+          format = "{icon}{capacity}%";
+          format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+        };
+
+        "idle_inhibitor" = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
         };
       };
     };

@@ -11,6 +11,12 @@
     defaultEditor = true;
     package = inputs.helix.packages.${pkgs.system}.helix;
 
+    extraPackages = with pkgs; [
+      vscode-langservers-extracted
+      marksman
+      rust-analyzer
+    ];
+
    themes = {
      everblush_transparent = {
       "inherits" = "everblush";

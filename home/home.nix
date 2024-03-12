@@ -26,19 +26,18 @@
       zathura
       termusic
       pavucontrol
+      librewolf
+      xfce.thunar
+      xfce.thunar-archive-plugin
 
       xz
 
       gnome.dconf-editor
     ];
 
-    file = {
-    };
   };
 
   services = {
-    # dunst.enable = true;
-
     gpg-agent = {
       enable = true;
       pinentryFlavor = "curses";
