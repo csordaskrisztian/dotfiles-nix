@@ -17,7 +17,15 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+      # theme = "connect";
+      # themePackages = with pkgs; [(
+      #   adi1090x-plymouth-themes.override {
+      #     selected_themes = [ "connect" ];
+      #   }
+      # )];
+    };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = ["amdgpu"];
   };

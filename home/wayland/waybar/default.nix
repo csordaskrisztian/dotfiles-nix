@@ -11,7 +11,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        spacing = 4;
+        spacing = 0;
         height = 30;
 
         modules-left = [
@@ -24,13 +24,14 @@
         ];
 
         modules-right = [
-          "idle_inhibitor"
-          "tray"
+          "group/grouptray"
+          "idle_inhibitor" 
+          "custom/notification"
           "cpu"
           "memory"
           "network"
-          "bluetooth"
           "pulseaudio"
+          "bluetooth"
           "battery"
         ];
 
@@ -43,7 +44,8 @@
           on-click = "activate";
           format = "";
           persistent-workspaces = {
-            "*" = 5;
+            "DP-3" = 5;
+            "HDMI-A-1" = [10];
           };
         };
 
@@ -111,9 +113,46 @@
         "idle_inhibitor" = {
           format = "{icon}";
           format-icons = {
-            activated = "";
-            deactivated = "";
+            activated = "󰔡";
+            deactivated = "󰨙";
           };
+        };
+
+        "group/grouptray" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            transition-left-to-right = false;
+          };
+          modules = [
+            "custom/tray"
+            "tray"
+          ];
+        };
+        "custom/tray" = {
+          format = "";
+          tooltip = false;
+        };
+
+        "custom/notification" = {
+          tooltip = false;
+          format = "{icon}";
+          format-icons = {
+            notification = "<span foreground='red'><sup></sup></span>";
+            none = "";
+            dnd-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-none = "";
+            inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            inhibited-none = "";
+            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none = "";
+          };
+          return-type = "json";
+          exec-if = "which swaync-client";
+          exec = "swaync-client -swb";
+          on-click = "sleep 0.1 && swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
+          escape = true;
         };
       };
     };

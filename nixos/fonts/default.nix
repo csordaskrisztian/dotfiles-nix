@@ -4,7 +4,7 @@
       material-symbols
       lexend
       source-code-pro
-      
+      cantarell-fonts
       maple-mono-NF
       maple-mono-SC-NF
 
@@ -14,6 +14,7 @@
           "JetBrainsMono"
           "Iosevka"
           "CascadiaCode"
+          "NerdFontsSymbolsOnly"
         ];
       })
     ];

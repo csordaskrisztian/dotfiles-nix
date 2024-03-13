@@ -29,10 +29,15 @@
       librewolf
       xfce.thunar
       xfce.thunar-archive-plugin
-
+      mpv
       xz
-
+      prismlauncher
+      nixos-icons
       gnome.dconf-editor
+      gnome.file-roller
+      loupe
+      playerctl
+      xfce.tumbler
     ];
 
   };

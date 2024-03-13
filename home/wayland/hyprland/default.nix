@@ -45,7 +45,7 @@
       };
 
       decoration = {
-        rounding = 8;
+        rounding = 12;
         blur = {
           enabled = true;
           size = 6;
@@ -109,14 +109,14 @@
         # "nomaximizerequest, class:.*"
         "float,class:^(pavucontrol)$"
         "float,class:^(blueman-manager)$"
-        "float,class:^()$,title:^(Picture-in-Picture)$"
+        "float,title:^(Picture-in-Picture)$"
         "float,class:^(dialog)$"
         "float,class:^(error)$"
         "float,title:^(Open File)$"
 
-        "keepaspectratio,title:^(Picture-inPicture)$"
-        "fakefullscreen,title:^(Picture-inPicture)$"
-        "pin,title:^(Picture-inPicture)$"
+        "keepaspectratio,title:^(Picture-in-Picture)$"
+        "fakefullscreen,title:^(Picture-in-Picture)$"
+        "pin,title:^(Picture-in-Picture)$"
         "noborder,onworkspace:1"
       ];
 
@@ -155,6 +155,8 @@
         "$mod, Tab, cyclenext"
         "$mod, Tab, bringactivetotop"
         "Control Alt, L, exec, loginctl lock-session"
+        "$mod, +, exec, hyprctl keyword general:gaps_out 20"
+        "$mod, -, exec, hyprctl keyword general:gaps_in 5"
 
         "${builtins.concatStringsSep "\n" (builtins.genList (
             x: let

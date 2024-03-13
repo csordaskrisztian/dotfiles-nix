@@ -3,7 +3,7 @@
 * {
     border: none;
     border-radius: 0px;
-    font-family: FiraCode Nerd Font;
+    font-family: Cantarell , Symbols Nerd Font Mono;
     font-size: 14px;
     font-weight: bold;
     min-height: 0px;
@@ -28,8 +28,7 @@ tooltip {
 }
 
 #workspaces {
-   padding: 9px 7px;
-   border-radius: 12px;
+   padding: 9px 5px;
 }
 
 #workspaces * {
@@ -64,6 +63,9 @@ tooltip {
     margin: 1px 2px;
 }
 
+#group-grouptray,
+#idle_inhibitor,
+#custom-notification,
 #tray,
 #bluetooth,
 #pulseaudio,
@@ -72,21 +74,14 @@ tooltip {
 #memory,
 #clock {
 	background: transparent;
-	padding: 0px 3px;
-	margin: 0px 5px;
+	padding: 0px 5px;
+	margin: 2px 3px;
   border-radius: 8px;
 }
 
-#battery {
-  padding-right: 15px;
-}
 
 #clock {
     border-radius: 12px;
-    padding-left: 3px;
-    padding-right: 15px;
-    margin-right: 0px;
-    margin-left: 10px;
     margin-top: 0px;
     margin-bottom: 0px;
     font-weight: bold;
@@ -95,10 +90,11 @@ tooltip {
 
 #custom-launcher {
     color: #${theme.colors.color4};
-    padding: 0px 15px 0px 10px;
+    padding: 0px 5px;
 
     /*border-right: solid 1px #282738;*/
     font-size: 20px;
+    font-weight: normal;
 }
   '';
 }

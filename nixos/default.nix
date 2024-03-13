@@ -32,7 +32,12 @@
     #   gnome.gnome-settings-daemon
     # ];
     # gnome.gnome-keyring.enable = true;
-    # gvfs.enable = true;
+    gvfs.enable = true;
+    devmon.enable = true;
+    udisks2.enable = true;
+    upower.enable = true;
+    power-profiles-daemon.enable = true;
+    
 
     greetd = let
       hyprsession = {
