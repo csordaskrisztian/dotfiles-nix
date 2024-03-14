@@ -11,8 +11,9 @@
     defaultEditor = true;
     package = inputs.helix.packages.${pkgs.system}.helix;
 
-    extraPackages = with pkgs; [
+    extraPackages = with pkgs; with nodePackages; [
       vscode-langservers-extracted
+      vscode-css-languageserver-bin
       marksman
       rust-analyzer
     ];

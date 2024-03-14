@@ -9,6 +9,7 @@
     ./hypridle.nix
     inputs.hyprlock.homeManagerModules.default
     inputs.hypridle.homeManagerModules.default
+    inputs.ironbar.homeManagerModules.default
   ];
   
   home = {
@@ -22,8 +23,8 @@
     ];
   };
 
-  # wayland.windowManager.hyprland = {
-  #   enable = true;
-  # };
+  programs.ironbar = {
+    enable = true;
+  };
   
 }
