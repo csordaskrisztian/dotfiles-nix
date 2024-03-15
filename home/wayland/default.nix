@@ -1,5 +1,8 @@
-{ inputs,pkgs,...}: {
-
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hyprland
     ./waybar
@@ -7,11 +10,12 @@
     ./wlogout.nix
     ./hyprlock.nix
     ./hypridle.nix
+    ./ironbar
     inputs.hyprlock.homeManagerModules.default
     inputs.hypridle.homeManagerModules.default
     inputs.ironbar.homeManagerModules.default
   ];
-  
+
   home = {
     packages = with pkgs; [
       wl-clipboard
@@ -19,12 +23,12 @@
       wofi
       swww
       swaynotificationcenter
-
     ];
-  };
 
-  programs.ironbar = {
-    enable = true;
+    sessionVariables = {
+      QT_QPA_PLATFORM = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+      XDG_SESSION_TYPE = "wayland";
+    };
   };
-  
 }

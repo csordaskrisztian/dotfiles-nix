@@ -38,6 +38,7 @@
       loupe
       playerctl
       xfce.tumbler
+      imagemagick
     ];
 
   };
@@ -45,7 +46,7 @@
   services = {
     gpg-agent = {
       enable = true;
-      pinentryFlavor = "curses";
+      pinentryPackage = pkgs.pinentry-curses;
     };
   };
 

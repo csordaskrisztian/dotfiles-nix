@@ -6,7 +6,7 @@
     enable = true;
     settings = {
       window = {
-        opacity = 0.8;
+        opacity = 0.9;
         padding = {
           x = 12;
           y = 12;
@@ -15,13 +15,13 @@
         startup_mode = "Windowed";
       };
 
-      # font = {
-      #   size = 11;
-      #   normal = {
-      #     family = "JetBrainsMono Nerd Font";
-      #     style = "Regular";
-      #   };
-      # };
+      font = {
+        size = 11;
+        # normal = {
+        #   family = "JetBrainsMono Nerd Font";
+        #   style = "Regular";
+        # };
+      };
 
       colors = {
         primary = {
