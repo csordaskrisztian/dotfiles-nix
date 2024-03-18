@@ -16,6 +16,8 @@
       vscode-css-languageserver-bin
       marksman
       rust-analyzer
+      typescript
+      typescript-language-server
     ];
 
    themes = {

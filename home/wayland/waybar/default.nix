@@ -24,7 +24,7 @@
         ];
 
         modules-right = [
-          "group/grouptray"
+          "tray"
           "idle_inhibitor" 
           "custom/notification"
           "cpu"

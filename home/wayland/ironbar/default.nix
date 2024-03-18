@@ -4,7 +4,7 @@
   ...
 }: {
   programs.ironbar = {
-    enable = true;
+    enable = false;
     config = {
       anchor_to_edges = true;
       position = "top";

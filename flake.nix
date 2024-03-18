@@ -16,6 +16,11 @@
       url = "github:JakeStanger/ironbar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = {
@@ -28,7 +33,7 @@
     theme = import ./themes/everblush.nix;
     pkgs = import nixpkgs {
       inherit system;
-      config.allowunfree = true;
+      config.allowUnfree = true;
     };
   in {
     nixosConfigurations = {

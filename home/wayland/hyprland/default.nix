@@ -8,10 +8,17 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
+    xwayland.enable = true;
     settings = {
       "$mod" = "SUPER";
 
-      monitor = [",preferred,auto,auto"];
+      # monitor = [",preferred,auto,auto"];
+      monitor = [
+        "HDMI-A-1, 1920x1080@60, 0x0, 1"
+        "DP-3, 1920x1080@144, 1920x0, 1"
+      ];
+
+      xwayland.force_zero_scaling = true;
 
       exec-once = [
         # "hyprpaper"
@@ -41,7 +48,7 @@
         "col.inactive_border" = "0xff${theme.colors.background}";
         layout = "dwindle";
         resize_on_border = true;
-        allow_tearing = false;
+        allow_tearing = true;
       };
 
       decoration = {
@@ -103,6 +110,8 @@
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         disable_autoreload = true;
+        no_direct_scanout = false;
+        vrr = 1;
       };
 
       windowrulev2 = [
@@ -134,6 +143,7 @@
         "$mod, S, togglespecialworkspace"
         "$mod Shift, S, movetoworkspace, special"
         "$mod, C, exec, hyprctl dispatch centerWindow"
+        "$mod, T, fullscreen"
 
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"

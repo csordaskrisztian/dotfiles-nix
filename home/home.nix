@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   ...
@@ -6,8 +7,10 @@
   imports = [
     ./themes
     ./editors/helix
+    ./editors/nixvim
     ./terminal
     ./wayland
+    inputs.ags.homeManagerModules.default
   ];
 
   news.display = "show";
@@ -20,7 +23,6 @@
 
     packages = with pkgs; [
       btop
-      neovim
       neofetch
       kitty
       zathura
@@ -39,8 +41,9 @@
       playerctl
       xfce.tumbler
       imagemagick
+      mangohud
+      gamescope
     ];
-
   };
 
   services = {
@@ -50,9 +53,15 @@
     };
   };
 
+  programs.ags.enable = true;
+
   home.sessionVariables = {
     EDITOR = "hx";
     VISUAL = "hx";
+
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
   };
 
   programs.home-manager.enable = true;

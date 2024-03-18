@@ -16,22 +16,24 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "Lat2-Terminus16";
-    keyMap = "hu";
+    # font = "Lat2-Terminus16";
+    # keyMap = "hu";
+    useXkbConfig = true;
   };
 
   services = {
     xserver = {
       enable = true;
+      excludePackages = [ pkgs.xterm ];
       xkb.layout = "hu";
       autorun = false;
     };
     blueman.enable = true;
-    # dbus.packages = with pkgs; [
-    #   gcr
-    #   gnome.gnome-settings-daemon
-    # ];
-    # gnome.gnome-keyring.enable = true;
+    dbus.packages = with pkgs; [
+      gcr
+      gnome.gnome-settings-daemon
+    ];
+    gnome.gnome-keyring.enable = true;
     gvfs.enable = true;
     devmon.enable = true;
     udisks2.enable = true;
@@ -64,8 +66,10 @@
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
     zsh.enable = true;
+    dconf.enable = true;
   };
 
+  nixpkgs.config.allowUnfree = true;
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -98,6 +102,7 @@
     bluetooth = {
       enable = true;
       powerOnBoot = false;
+      settings.General.Experimental = true;
     };
   };
   # powerManagement.enable = true;
@@ -135,6 +140,11 @@
 
   xdg.portal = {
     enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = ["gtk" "hyprland"];
+    };
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
