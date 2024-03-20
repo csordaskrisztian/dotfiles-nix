@@ -16,7 +16,6 @@
       systemd.enable = true;
       supportedFilesystems = ["ext4" "ntfs"];
     };
-    # supportedFilesystems = ["ntfs" "ext4"];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -54,6 +53,7 @@
           xorg.libXi
           xorg.libXinerama
           xorg.libXScrnSaver
+          gamemode
         ];
     };
   };

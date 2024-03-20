@@ -1,10 +1,14 @@
 {
+  inputs,
   pkgs,
   theme,
   ...
 }: {
+  imports = [
+    inputs.ironbar.homeManagerModules.default
+  ];
   programs.ironbar = {
-    enable = false;
+    enable = true;
     config = {
       anchor_to_edges = true;
       position = "top";

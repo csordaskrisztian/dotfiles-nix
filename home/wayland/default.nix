@@ -10,10 +10,9 @@
     ./wlogout.nix
     ./hyprlock.nix
     ./hypridle.nix
-    ./ironbar
+    # ./ironbar
     inputs.hyprlock.homeManagerModules.default
     inputs.hypridle.homeManagerModules.default
-    inputs.ironbar.homeManagerModules.default
   ];
 
   home = {
@@ -23,12 +22,9 @@
       wofi
       swww
       swaynotificationcenter
-    ];
 
-    sessionVariables = {
-      QT_QPA_PLATFORM = "wayland";
-      SDL_VIDEODRIVER = "wayland";
-      XDG_SESSION_TYPE = "wayland";
-    };
+      grim
+      slurp
+    ];
   };
 }

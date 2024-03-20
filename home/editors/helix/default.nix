@@ -38,15 +38,7 @@
         modifiers = ["italic"];
       };
       "ui.background" = "{}";
-      palette = {
-        green = "#A9B665";
-        yellow = "#D8A657";
-        red = "#EA6962";
-        blue = "#7DAEA3";
-        magenta = "#D3869B";
-        cyan = "#89B482";
-        white = "#D4BE98";
-      };
+      
     };
    };
 
@@ -81,7 +73,7 @@
         gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
 
         statusline = {
-          left = ["mode" "spinner" "file-name" "file-modification-indicator"];
+          left = ["mode" "version-control" "spinner" "file-name" "file-modification-indicator"];
           center = [];
           right = ["diagnostics" "selections" "position-percentage" "file-type"];
           mode = {

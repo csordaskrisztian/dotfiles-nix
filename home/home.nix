@@ -10,6 +10,7 @@
     ./editors/nixvim
     ./terminal
     ./wayland
+    ./software
     inputs.ags.homeManagerModules.default
   ];
 
@@ -43,6 +44,7 @@
       imagemagick
       mangohud
       gamescope
+      vscodium-fhs
     ];
   };
 
@@ -62,6 +64,8 @@
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    WLR_RENDERER = "vulkan";
   };
 
   programs.home-manager.enable = true;

@@ -20,7 +20,7 @@
         font = wezterm.font "Maple Mono SC NF",
         font_size = 11,
 
-        color_scheme = "Everblush (Gogh)",
+        color_scheme = "Jellybeans (Gogh)",
         window_background_opacity = 1.0,
         warn_about_missing_glyphs = false,
         enable_scroll_bar = false,

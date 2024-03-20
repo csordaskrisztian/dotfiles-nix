@@ -43,13 +43,14 @@
       luasnip.enable = true;
       telescope.enable = true;
       oil.enable = true;
+      nvim-colorizer.enable = true;
 
       lsp = {
         enable = true;
         servers = {
           nil_ls.enable = true;
           nil_ls.settings.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
-          rust-analyzer.enable = true;
+          # rust-analyzer.enable = true;
           cssls.enable = true;
           jsonls.enable = true;
         };

@@ -5,11 +5,9 @@
     border-radius: 0px;
     font-family: Cantarell , Symbols Nerd Font Mono;
     font-size: 14px;
-    font-weight: bold;
     min-height: 0px;
     padding: 0;
     margin: 0;
-    background: transparent;
 }
 
 
@@ -24,7 +22,7 @@ tooltip {
     background: #${theme.colors.background};
     color: #${theme.colors.foreground};
     border-radius: 12px;
-    border-width: 0px;
+    border: 1px solid #${theme.colors.color8};
 }
 
 #workspaces {
@@ -74,7 +72,7 @@ tooltip {
 #memory,
 #clock {
 	background: transparent;
-	padding: 0px 5px;
+	padding: 4px 5px;
 	margin: 2px 3px;
   border-radius: 8px;
 }

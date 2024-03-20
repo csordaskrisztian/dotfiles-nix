@@ -18,6 +18,11 @@
         "DP-3, 1920x1080@144, 1920x0, 1"
       ];
 
+      workspace = [
+        "DP-3,1"
+        "HDMI-A-1,10"
+      ];
+
       xwayland.force_zero_scaling = true;
 
       exec-once = [
@@ -38,6 +43,11 @@
         follow_mouse = 1;
         sensitivity = 0;
         accel_profile = "flat";
+        touchpad = {
+          natural_scroll = "yes";
+          disable_while_typing = true;
+          drag_lock = true;
+        };
       };
 
       general = {
@@ -135,7 +145,7 @@
         "$mod, Q, killactive"
         "$mod, delete, exit"
         "$mod, Space, togglefloating"
-        "$mod, D, exec, wofi -f --show=drun"
+        "$mod, D, exec, pkill .anyrun-wrapped || anyrun"
         "$mod, F, exec, librewolf"
         "$mod, P, pseudo"
         "$mod, J, togglesplit"
@@ -144,6 +154,8 @@
         "$mod Shift, S, movetoworkspace, special"
         "$mod, C, exec, hyprctl dispatch centerWindow"
         "$mod, T, fullscreen"
+        ", Print, exec, grim -o DP-3"
+        "$MODSHIFT, O, exec, grim -g \"$(slurp)\""
 
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
