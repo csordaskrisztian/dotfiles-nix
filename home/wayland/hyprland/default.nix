@@ -19,8 +19,8 @@
       ];
 
       workspace = [
-        "DP-3,1"
-        "HDMI-A-1,10"
+        "1,monitor:DP-3"
+        "10,monitor:HDMI-A-1"
       ];
 
       xwayland.force_zero_scaling = true;
@@ -83,10 +83,10 @@
 
       animation = {
         bezier = [
-        "fluent_decel, 0, 0.2, 0.4, 1"
-        "easeOutCirc, 0, 0.55, 0.45, 1"
-        "easeOutCubic, 0.33, 1, 0.68, 1"
-        "easeinoutsine, 0.37, 0, 0.63, 1"
+          "fluent_decel, 0, 0.2, 0.4, 1"
+          "easeOutCirc, 0, 0.55, 0.45, 1"
+          "easeOutCubic, 0.33, 1, 0.68, 1"
+          "easeinoutsine, 0.37, 0, 0.63, 1"
         ];
         animation = [
           "windowsIn, 1, 1.7, easeOutCubic, slide" # window open
@@ -177,8 +177,6 @@
         "$mod, Tab, cyclenext"
         "$mod, Tab, bringactivetotop"
         "Control Alt, L, exec, loginctl lock-session"
-        "$mod, +, exec, hyprctl keyword general:gaps_out 20"
-        "$mod, -, exec, hyprctl keyword general:gaps_in 5"
 
         "${builtins.concatStringsSep "\n" (builtins.genList (
             x: let
@@ -208,4 +206,3 @@
     };
   };
 }
-  

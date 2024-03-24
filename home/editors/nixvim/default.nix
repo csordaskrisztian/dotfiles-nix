@@ -6,78 +6,99 @@
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    ./keymaps.nix
+    ./lualine.nix
+    ./lsp.nix
+    ./cmp.nix
   ];
 
   programs.nixvim = {
     enable = true;
-    colorschemes.kanagawa = {
+    colorschemes.catppuccin = {
       enable = true;
-      transparent = true;
+      transparentBackground = true;
+      flavour = "mocha";
     };
     clipboard.providers.wl-copy.enable = true;
 
     options = {
       number = true;
       relativenumber = true;
-
+      clipboard = "unnamedplus";
+      smartindent = true;
       shiftwidth = 2;
-    };
-    globals = {
-      mapleader = " ";
+      inccommand = "split";
+      cursorline = true;
+      hlsearch = true;
+      incsearch = true;
+      wrap = true;
+      splitbelow = true;
+      splitright = true;
+      mouse = "a";
+      updatetime = 50;
+      completeopt = ["menuone" "noselect" "noinsert"];
+      termguicolors = true;
+      showmode = false;
+      autoindent = true;
+      scrolloff = 10;
     };
 
     keymaps = [
-      {
-        action = "<cmd>Telescope live_grep<CR>";
-        key = "<leader>g";
-      }
     ];
 
     plugins = {
+      diffview.enable = true;
+      lint.enable = true;
+      fidget.enable = true;
+      which-key.enable = true;
       bufferline.enable = true;
       lightline.enable = true;
       nix.enable = true;
-      nvim-tree.enable = true;
-      treesitter.enable = true;
-      lualine.enable = true;
       luasnip.enable = true;
       telescope.enable = true;
-      oil.enable = true;
       nvim-colorizer.enable = true;
-
-      lsp = {
-        enable = true;
-        servers = {
-          nil_ls.enable = true;
-          nil_ls.settings.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
-          # rust-analyzer.enable = true;
-          cssls.enable = true;
-          jsonls.enable = true;
+      nvim-autopairs.enable = true;
+      # nvim-tree = {
+      #   enable = true;
+      #   openOnSetupFile = true;
+      #   autoReloadOnWrite = true;
+      # };
+      neo-tree = {
+        enable = false;
+        enableDiagnostics = true;
+        enableGitStatus = true;
+        enableModifiedMarkers = true;
+        enableRefreshOnWrite = true;
+        closeIfLastWindow = true;
+        popupBorderStyle = "rounded";
+        buffers = {
+          bindToCwd = false;
+          followCurrentFile = {
+            enabled = true;
+          };
         };
-      };
-
-      cmp = {
-        enable = true;
-        autoEnableSources = true;
-
-        settings = {
-          sources = [
-            {name = "nvim_lsp";}
-            {name = "path";}
-            {name = "buffer";}
-            {name = "luasnip";}
-          ];
-          mapping = {
-            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-            "<C-f>" = "cmp.mapping.scroll_docs(4)";
-            "<C-Space>" = "cmp.mapping.complete()";
-            "<C-e>" = "cmp.mapping.close()";
-            "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-            "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-            "<CR>" = "cmp.mapping.confirm({ select = true })";
+        window = {
+          width = 40;
+          height = 15;
+          autoExpandWidth = false;
+          mappings = {
+            "<space>" = "none";
           };
         };
       };
+
+      treesitter = {
+        enable = true;
+        nixGrammars = true;
+        indent = true;
+        folding = true;
+        nixvimInjections = true;
+      };
+
+      cmp-nvim-lsp = {enable = true;}; # lsp
+      cmp-buffer = {enable = true;};
+      cmp-path = {enable = true;}; # file system paths
+      cmp_luasnip = {enable = true;}; # snippets
     };
   };
 }

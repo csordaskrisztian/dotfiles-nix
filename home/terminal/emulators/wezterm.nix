@@ -16,12 +16,12 @@
         colors = {
           background = "#161616"
         },
-        
+
         font = wezterm.font "Maple Mono SC NF",
         font_size = 11,
 
-        color_scheme = "Jellybeans (Gogh)",
-        window_background_opacity = 1.0,
+        color_scheme = "TokyoNight (Gogh)",
+        window_background_opacity = 0.9,
         warn_about_missing_glyphs = false,
         enable_scroll_bar = false,
         enable_tab_bar = false,

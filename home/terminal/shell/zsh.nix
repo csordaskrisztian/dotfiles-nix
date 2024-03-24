@@ -10,8 +10,8 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      nix-switch = "sudo nixos-rebuild switch --flake .";
-      home-switch = "home-manager switch --flake .";
+      nix-switch = "sudo nixos-rebuild switch --flake ~/dotfiles-nix";
+      home-switch = "home-manager switch --flake ~/dotfiles-nix";
       installed = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq | sk";
       installedall = "nix-store --query --requisites /run/current-system | sk";
       cleanup = "sudo nix-collect-garbage --delete-older-than 1d";

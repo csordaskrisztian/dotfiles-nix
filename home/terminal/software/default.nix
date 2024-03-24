@@ -20,7 +20,7 @@
     dust
     duf
     fd
-    
+    cool-retro-term
     yt-dlp
     cfspeedtest    
   ];

@@ -24,7 +24,7 @@
   services = {
     xserver = {
       enable = true;
-      excludePackages = [ pkgs.xterm ];
+      excludePackages = [pkgs.xterm];
       xkb.layout = "hu";
       autorun = false;
     };
@@ -39,7 +39,6 @@
     udisks2.enable = true;
     upower.enable = true;
     power-profiles-daemon.enable = true;
-    
 
     greetd = let
       hyprsession = {
@@ -71,7 +70,11 @@
 
   nixpkgs.config.allowUnfree = true;
   nix = {
+    # pin the registry to avoid downloading and evaling a new nixpkgs version every time
+    registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
+
     settings = {
+      warn-dirty = false;
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
 
@@ -147,7 +150,7 @@
       common.default = ["gtk"];
       hyprland.default = ["gtk" "hyprland"];
     };
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
