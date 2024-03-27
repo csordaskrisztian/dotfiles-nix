@@ -1,10 +1,8 @@
 {pkgs, ...}: {
-
   imports = [
     ./yazi.nix
     ./bottom.nix
     ./git.nix
-    
   ];
 
   home.packages = with pkgs; [
@@ -20,9 +18,8 @@
     dust
     duf
     fd
-    cool-retro-term
     yt-dlp
-    cfspeedtest    
+    cfspeedtest
   ];
 
   programs = {

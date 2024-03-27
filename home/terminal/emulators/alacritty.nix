@@ -1,12 +1,9 @@
-{
-  theme,
-  ...
-}: {
+{theme, ...}: {
   programs.alacritty = {
     enable = true;
     settings = {
       window = {
-        opacity = 0.9;
+        opacity = 0.7;
         padding = {
           x = 12;
           y = 12;

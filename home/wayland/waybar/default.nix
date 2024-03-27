@@ -25,10 +25,10 @@
 
         modules-right = [
           "tray"
-          "idle_inhibitor" 
-          "custom/notification"
+          "idle_inhibitor"
           "cpu"
           "memory"
+          "custom/notification"
           "network"
           "pulseaudio"
           "bluetooth"
@@ -74,22 +74,25 @@
 
         "network" = {
           format-wifi = "{icon}";
-          format-ethernet = "󱘖";
+          format-ethernet = "󰤨";
           tooltip-format = "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
           format-linked = "󱘖 {ifname} (No IP)";
           format-disconnected = " Disconnected";
-          format-alt = "󰤨 {signalStrength}%";
+          # format-alt = "󰤨 {signalStrength}%";
           interval = 5;
           format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
+          on-click = "sleep 0.1 && swaync-client -t -sw";
         };
 
         "pulseaudio" = {
           scroll-step = 5;
-          format = "{icon} {volume}%";
+          format = "{icon}";
           format-icons = {
             "default" = ["" "" ""];
           };
-          on-click = "pavucontrol";
+          tooltip-format = "{desc} {volume}%";
+          # on-click = "pavucontrol";
+          on-click = "sleep 0.1 && swaync-client -t -sw";
         };
 
         "bluetooth" = {

@@ -14,7 +14,7 @@
   boot = {
     initrd = {
       systemd.enable = true;
-      supportedFilesystems = ["ext4" "ntfs"];
+      supportedFilesystems = ["ext4"];
     };
     loader = {
       systemd-boot.enable = true;
@@ -22,15 +22,13 @@
     };
     plymouth = {
       enable = true;
-      # theme = "connect";
-      # themePackages = with pkgs; [(
-      #   adi1090x-plymouth-themes.override {
-      #     selected_themes = [ "connect" ];
-      #   }
-      # )];
+      theme = "nixos-bgrt";
+      themePackages = with pkgs; [nixos-bgrt-plymouth];
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = ["amdgpu"];
+
+    tmp.cleanOnBoot = true;
   };
 
   networking.hostName = "desktop";
@@ -39,7 +37,7 @@
 
   programs.steam = {
     enable = true;
-    # fix gamescope inside steam
+
     package = pkgs.steam.override {
       extraPkgs = pkgs:
         with pkgs; [
@@ -53,16 +51,10 @@
           xorg.libXi
           xorg.libXinerama
           xorg.libXScrnSaver
-          gamemode
         ];
     };
   };
-
-  qt = {
-    enable = false;
-    platformTheme = "gtk2";
-    style = "gtk2";
-  };
+  programs.gamemode.enable = true;
 
   hardware = {
     opengl = {

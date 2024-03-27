@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   pkgs,
   ...
 }: {
@@ -44,7 +43,6 @@
       imagemagick
       mangohud
       gamescope
-      vscodium-fhs
     ];
   };
 
@@ -53,6 +51,24 @@
       enable = true;
       pinentryPackage = pkgs.pinentry-curses;
     };
+    kdeconnect.enable = true;
+  };
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    Unit.Description = "polkit-gnome-authentication-agent-1";
+
+    Install = {
+      WantedBy = ["graphical-session.target"];
+      Wants = ["graphical-session.target"];
+      After = ["graphical-session.target"];
+    };
+
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
   };
 
   programs.ags.enable = true;
@@ -60,6 +76,9 @@
   home.sessionVariables = {
     EDITOR = "hx";
     VISUAL = "hx";
+    BROWSER = "librewolf";
+    TERMINAL = "alacritty";
+    NIX_AUTO_RUN = "1";
 
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";

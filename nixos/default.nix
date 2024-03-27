@@ -6,8 +6,9 @@
   ...
 }: {
   imports = [
-    # ./hardware-configuration.nix
     ./fonts
+    inputs.home-manager.nixosModules.default
+    inputs.hyprland.nixosModules.default
   ];
 
   networking.networkmanager.enable = true;
@@ -17,7 +18,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     # font = "Lat2-Terminus16";
-    # keyMap = "hu";
     useXkbConfig = true;
   };
 
@@ -26,8 +26,8 @@
       enable = true;
       excludePackages = [pkgs.xterm];
       xkb.layout = "hu";
-      autorun = false;
     };
+    dbus.implementation = "broker";
     blueman.enable = true;
     dbus.packages = with pkgs; [
       gcr
@@ -39,14 +39,11 @@
     udisks2.enable = true;
     upower.enable = true;
     power-profiles-daemon.enable = true;
+    accounts-daemon.enable = true;
 
     greetd = let
       hyprsession = {
         command = "${lib.getExe config.programs.hyprland.package}";
-        user = "krisz";
-      };
-      tuisession = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --greeting Sneed --asterisks --remember --cmd Hyprland";
         user = "krisz";
       };
     in {
@@ -59,20 +56,29 @@
     };
   };
 
+  security = {
+    pam.services.greetd.enableGnomeKeyring = true;
+    # polkit.enable = true;
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
+
   programs = {
     hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
     zsh.enable = true;
     dconf.enable = true;
+    kdeconnect.enable = true;
+    seahorse.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
   nix = {
-    # pin the registry to avoid downloading and evaling a new nixpkgs version every time
-    registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
-
     settings = {
       warn-dirty = false;
       experimental-features = ["nix-command" "flakes"];
@@ -121,13 +127,6 @@
     pulse.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = "${config.users.users.krisz.home}/dotfiles-nix";
-  };
   users.users.krisz = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel"]; # Enable ‘sudo’ for the user.
@@ -141,6 +140,8 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
+    git
+    home-manager
   ];
 
   xdg.portal = {
@@ -152,30 +153,6 @@
     };
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }

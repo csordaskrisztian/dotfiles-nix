@@ -1,11 +1,11 @@
 {...}: {
   programs.nixvim.plugins = {
     lualine = {
-      enable = false;
+      enable = true;
       alwaysDivideMiddle = true;
       globalstatus = true;
-      ignoreFocus = ["neo-tree"];
-      extensions = ["fzf"];
+     # ignoreFocus = ["neo-tree"];
+      extensions = ["fzf" "neo-tree"];
       theme = "auto";
       componentSeparators = {
         left = "|";

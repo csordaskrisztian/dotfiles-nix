@@ -7,8 +7,12 @@
     enable = true;
     autosuggestion.enable = true;
     enableCompletion = true;
-    syntaxHighlighting.enable = true;
-
+    autocd = true;
+    syntaxHighlighting = {
+      enable = true;
+      styles = {"alias" = "fg=magenta";};
+      highlighters = ["main" "brackets" "pattern"];
+    };
     shellAliases = {
       nix-switch = "sudo nixos-rebuild switch --flake ~/dotfiles-nix";
       home-switch = "home-manager switch --flake ~/dotfiles-nix";
@@ -22,7 +26,6 @@
       tree = "eza --tree";
       l = "eza";
       # eza = "eza -l --sort type --no-permissions --no-user --no-time --header --icons --no-filesize --group-directories-first";
-      
     };
   };
 }

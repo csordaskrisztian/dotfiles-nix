@@ -13,20 +13,51 @@
         key = "<leader>g";
       }
       {
+        action = "<cmd>Telescope find_files<CR>";
+        key = "<leader>f";
+      }
+      {
+        action = "<cmd>Telescope diagnostics<CR>";
+        key = "<leader>d";
+      }
+      {
+        action = "<cmd>Telescope keymaps<CR>";
+        key = "<leader>ch";
+      }
+
+      {
         mode = "t";
         action = "<C-\\><C-n>";
         key = "<Esc><Esc>";
       }
       {
-        # Toggle NvimTree
         key = "<leader>e";
-        # action = "<CMD>NvimTreeToggle<CR>";
         action = ":Neotree toggle reveal_force_cwd<cr>";
+        # action = "<CMD>NvimTreeToggle<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>ge";
+        action = ":Neotree git_status<CR>";
+        options = {
+          silent = true;
+          desc = "Git explorer";
+        };
       }
       {
         # Format file
-        key = "<space>fm";
+        key = "<leader>q";
         action = "<CMD>lua vim.lsp.buf.format()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<C-c>";
+        action = "<Plug>(comment_toggle_linewise_current)";
+      }
+      {
+        mode = "v";
+        key = "<C-c>";
+        action = "<Plug>(comment_toggle_linewise_visual)";
       }
       {
         mode = "n";
@@ -38,7 +69,7 @@
         };
       }
       {
-        mode = ["n" "i"];
+        mode = "n";
         key = "<Up>";
         action = "<Nop>";
         options = {
@@ -48,7 +79,7 @@
         };
       }
       {
-        mode = ["n" "i"];
+        mode = "n";
         key = "<Down>";
         action = "<Nop>";
         options = {
@@ -58,7 +89,7 @@
         };
       }
       {
-        mode = ["n" "i"];
+        mode = "n";
         key = "<Right>";
         action = "<Nop>";
         options = {
@@ -68,7 +99,7 @@
         };
       }
       {
-        mode = ["n" "i"];
+        mode = "n";
         key = "<Left>";
         action = "<Nop>";
         options = {
@@ -93,6 +124,11 @@
         options = {
           desc = "Cycle to previous buffer";
         };
+      }
+      {
+        mode = "n";
+        key = "<leader>x";
+        action = "<cmd>lua require('bufferline.commands').unpin_and_close()<cr>";
       }
     ];
   };

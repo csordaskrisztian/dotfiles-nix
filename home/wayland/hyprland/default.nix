@@ -19,8 +19,8 @@
       ];
 
       workspace = [
-        "1,monitor:DP-3"
-        "10,monitor:HDMI-A-1"
+        "1,monitor:DP-3, default:true"
+        "10,monitor:HDMI-A-1, default:true"
       ];
 
       xwayland.force_zero_scaling = true;
@@ -35,6 +35,7 @@
 
       env = [
         "QT_QPA_PLATFORMTHEME,qt5ct"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
       ];
 
       input = {
@@ -127,7 +128,7 @@
       windowrulev2 = [
         # "nomaximizerequest, class:.*"
         "float,class:^(pavucontrol)$"
-        "float,class:^(blueman-manager)$"
+        "float,class:^(.blueman-manager-wrapped)$"
         "float,title:^(Picture-in-Picture)$"
         "float,class:^(dialog)$"
         "float,class:^(error)$"
@@ -136,7 +137,6 @@
         "keepaspectratio,title:^(Picture-in-Picture)$"
         "fakefullscreen,title:^(Picture-in-Picture)$"
         "pin,title:^(Picture-in-Picture)$"
-        "noborder,onworkspace:1"
       ];
 
       bind = [
@@ -154,6 +154,8 @@
         "$mod Shift, S, movetoworkspace, special"
         "$mod, C, exec, hyprctl dispatch centerWindow"
         "$mod, T, fullscreen"
+        "$mod, E, exec, wezterm -e yazi"
+        "$mod, R, exec, swaync-client -t -sw"
         ", Print, exec, grim -o DP-3"
         "$MODSHIFT, O, exec, grim -g \"$(slurp)\""
 

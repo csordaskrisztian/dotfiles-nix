@@ -1,4 +1,5 @@
 {
+  name = "everblush";
   colors = {
     background = "161616";
     foreground = "dadada";

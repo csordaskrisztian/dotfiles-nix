@@ -90,10 +90,10 @@
         gutters = ["diagnostics" "line-numbers" "spacer" "diff"];
 
         statusline = {
-          separator = "│";
+          separator = "🭋🭛";
           left = ["mode" "spinner" "version-control" "file-name" "file-modification-indicator"];
           center = [];
-          right = ["diagnostics" "separator" "selections" "separator" "position-percentage" "separator" "file-type"];
+          right = ["diagnostics" "selections" "separator" "position-percentage" "separator" "file-type"];
           mode = {
             normal = "NORMAL";
             insert = "INSERT";
